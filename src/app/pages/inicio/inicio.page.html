@@ -1,0 +1,37 @@
+
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>
+      Validación de Correo Electrónico y Mensaje
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form (ngSubmit)="onSubmit()">
+   
+    <ion-item lines="full">
+      <ion-label position="floating" color="primary">Correo Electrónico</ion-label>
+      <ion-input [(ngModel)]="email" name="email" type="email" required></ion-input>
+    </ion-item>
+
+    
+    <ion-item lines="full">
+      <ion-label position="floating" color="primary">Mensaje</ion-label>
+      <p> </p>
+      <ion-textarea [(ngModel)]="message" name="message" rows="6" placeholder="Escribe tu mensaje aquí" required></ion-textarea>
+    </ion-item>
+
+    
+    <ion-button expand="full" type="submit" color="secondary">Enviar</ion-button>
+
+    
+    <ion-text color="danger" *ngIf="email && !isValidEmail()">
+      <p style="font-size: 14px; font-weight: bold;">El correo electrónico no es válido.</p>
+    </ion-text>
+    <ion-text color="success" *ngIf="email && isValidEmail()">
+      <p style="font-size: 14px; font-weight: bold;">El correo electrónico es válido.</p>
+    </ion-text>
+  </form>
+</ion-content>
+
